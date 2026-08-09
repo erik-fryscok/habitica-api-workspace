@@ -1,0 +1,115 @@
+info:
+  name: Get any Party given its ID
+  type: http
+  seq: 3
+  tags:
+    - Hall
+
+http:
+  method: GET
+  url: "{{baseUrl}}/api/v3/hall/heroes/party/:groupId"
+  params:
+    - name: groupId
+      value: ""
+      type: path
+      description: party's group ID
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success 200
+    request:
+      url: "{{baseUrl}}/api/v3/hall/heroes/party/:groupId"
+      method: GET
+      params:
+        - name: groupId
+          value: ""
+          type: path
+          description: party's group ID
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "data": {}
+          }
+  - name: 400 Response
+    description: "400"
+    request:
+      url: "{{baseUrl}}/api/v3/hall/heroes/party/:groupId"
+      method: GET
+      params:
+        - name: groupId
+          value: ""
+          type: path
+          description: party's group ID
+    response:
+      status: 400
+      statusText: Bad Request
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "groupIdRequired": {}
+          }
+  - name: 401 Response
+    description: "401"
+    request:
+      url: "{{baseUrl}}/api/v3/hall/heroes/party/:groupId"
+      method: GET
+      params:
+        - name: groupId
+          value: ""
+          type: path
+          description: party's group ID
+    response:
+      status: 401
+      statusText: Unauthorized
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "NoAuthHeaders": {},
+            "NoAccount": {},
+            "NoPrivs": {}
+          }
+  - name: 404 Response
+    description: "404"
+    request:
+      url: "{{baseUrl}}/api/v3/hall/heroes/party/:groupId"
+      method: GET
+      params:
+        - name: groupId
+          value: ""
+          type: path
+          description: party's group ID
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "NoUser": {},
+            "GroupNotFound": {}
+          }

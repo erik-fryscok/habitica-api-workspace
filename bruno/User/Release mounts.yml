@@ -1,0 +1,58 @@
+info:
+  name: Release mounts
+  type: http
+  seq: 42
+  tags:
+    - User
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/v3/user/release-mounts"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success 200
+    request:
+      url: "{{baseUrl}}/api/v3/user/release-mounts"
+      method: POST
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "success": true,
+            "data": {
+              },
+              "items": {}
+            },
+            "message": "Mounts released"
+          }
+  - name: 400 Response
+    description: Error 4xx
+    request:
+      url: "{{baseUrl}}/api/v3/user/release-mounts"
+      method: POST
+    response:
+      status: 400
+      statusText: Bad Request
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "Gems": {}
+          }

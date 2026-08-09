@@ -1,0 +1,488 @@
+info:
+  name: Cast a skill (spell) on a target
+  type: http
+  seq: 20
+  tags:
+    - User
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/v3/user/class/cast/:spellId"
+  params:
+    - name: spellId
+      value: fireball
+      type: path
+      description: The skill to cast.
+    - name: spellId
+      value: mpheal
+      type: path
+      description: The skill to cast.
+      disabled: true
+    - name: spellId
+      value: earth
+      type: path
+      description: The skill to cast.
+      disabled: true
+    - name: spellId
+      value: frost
+      type: path
+      description: The skill to cast.
+      disabled: true
+    - name: spellId
+      value: smash
+      type: path
+      description: The skill to cast.
+      disabled: true
+    - name: spellId
+      value: defensiveStance
+      type: path
+      description: The skill to cast.
+      disabled: true
+    - name: spellId
+      value: valorousPresence
+      type: path
+      description: The skill to cast.
+      disabled: true
+    - name: spellId
+      value: intimidate
+      type: path
+      description: The skill to cast.
+      disabled: true
+    - name: spellId
+      value: pickPocket
+      type: path
+      description: The skill to cast.
+      disabled: true
+    - name: spellId
+      value: backStab
+      type: path
+      description: The skill to cast.
+      disabled: true
+    - name: spellId
+      value: toolsOfTrade
+      type: path
+      description: The skill to cast.
+      disabled: true
+    - name: spellId
+      value: stealth
+      type: path
+      description: The skill to cast.
+      disabled: true
+    - name: spellId
+      value: heal
+      type: path
+      description: The skill to cast.
+      disabled: true
+    - name: spellId
+      value: protectAura
+      type: path
+      description: The skill to cast.
+      disabled: true
+    - name: spellId
+      value: brightness
+      type: path
+      description: The skill to cast.
+      disabled: true
+    - name: spellId
+      value: healAll
+      type: path
+      description: The skill to cast.
+      disabled: true
+    - name: spellId
+      value: snowball
+      type: path
+      description: The skill to cast.
+      disabled: true
+    - name: spellId
+      value: spookySparkles
+      type: path
+      description: The skill to cast.
+      disabled: true
+    - name: spellId
+      value: seafoam
+      type: path
+      description: The skill to cast.
+      disabled: true
+    - name: spellId
+      value: shinySeed
+      type: path
+      description: The skill to cast.
+      disabled: true
+    - name: targetId
+      value: ""
+      type: query
+      description: Query parameter, necessary if the spell is cast on a party member or task. Not used if the spell is casted on the user or the user's current party.
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success 200
+    request:
+      url: "{{baseUrl}}/api/v3/user/class/cast/:spellId"
+      method: POST
+      params:
+        - name: spellId
+          value: fireball
+          type: path
+          description: The skill to cast.
+        - name: spellId
+          value: mpheal
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: spellId
+          value: earth
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: spellId
+          value: frost
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: spellId
+          value: smash
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: spellId
+          value: defensiveStance
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: spellId
+          value: valorousPresence
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: spellId
+          value: intimidate
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: spellId
+          value: pickPocket
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: spellId
+          value: backStab
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: spellId
+          value: toolsOfTrade
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: spellId
+          value: stealth
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: spellId
+          value: heal
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: spellId
+          value: protectAura
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: spellId
+          value: brightness
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: spellId
+          value: healAll
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: spellId
+          value: snowball
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: spellId
+          value: spookySparkles
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: spellId
+          value: seafoam
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: spellId
+          value: shinySeed
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: targetId
+          value: ""
+          type: query
+          description: Query parameter, necessary if the spell is cast on a party member or task. Not used if the spell is casted on the user or the user's current party.
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "data": ""
+          }
+  - name: 400 Response
+    description: "400"
+    request:
+      url: "{{baseUrl}}/api/v3/user/class/cast/:spellId"
+      method: POST
+      params:
+        - name: spellId
+          value: fireball
+          type: path
+          description: The skill to cast.
+        - name: spellId
+          value: mpheal
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: spellId
+          value: earth
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: spellId
+          value: frost
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: spellId
+          value: smash
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: spellId
+          value: defensiveStance
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: spellId
+          value: valorousPresence
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: spellId
+          value: intimidate
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: spellId
+          value: pickPocket
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: spellId
+          value: backStab
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: spellId
+          value: toolsOfTrade
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: spellId
+          value: stealth
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: spellId
+          value: heal
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: spellId
+          value: protectAura
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: spellId
+          value: brightness
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: spellId
+          value: healAll
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: spellId
+          value: snowball
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: spellId
+          value: spookySparkles
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: spellId
+          value: seafoam
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: spellId
+          value: shinySeed
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: targetId
+          value: ""
+          type: query
+          description: Query parameter, necessary if the spell is cast on a party member or task. Not used if the spell is casted on the user or the user's current party.
+    response:
+      status: 400
+      statusText: Bad Request
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "Not": {}
+          }
+  - name: 404 Response
+    description: "404"
+    request:
+      url: "{{baseUrl}}/api/v3/user/class/cast/:spellId"
+      method: POST
+      params:
+        - name: spellId
+          value: fireball
+          type: path
+          description: The skill to cast.
+        - name: spellId
+          value: mpheal
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: spellId
+          value: earth
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: spellId
+          value: frost
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: spellId
+          value: smash
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: spellId
+          value: defensiveStance
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: spellId
+          value: valorousPresence
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: spellId
+          value: intimidate
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: spellId
+          value: pickPocket
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: spellId
+          value: backStab
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: spellId
+          value: toolsOfTrade
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: spellId
+          value: stealth
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: spellId
+          value: heal
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: spellId
+          value: protectAura
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: spellId
+          value: brightness
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: spellId
+          value: healAll
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: spellId
+          value: snowball
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: spellId
+          value: spookySparkles
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: spellId
+          value: seafoam
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: spellId
+          value: shinySeed
+          type: path
+          description: The skill to cast.
+          disabled: true
+        - name: targetId
+          value: ""
+          type: query
+          description: Query parameter, necessary if the spell is cast on a party member or task. Not used if the spell is casted on the user or the user's current party.
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "TaskNotFound": {},
+            "PartyNotFound": {},
+            "UserNotFound": {}
+          }

@@ -1,0 +1,337 @@
+info:
+  name: Get all available content objects
+  type: http
+  seq: 1
+  tags:
+    - Content
+
+http:
+  method: GET
+  url: "{{baseUrl}}/api/v3/content"
+  params:
+    - name: language
+      value: bg
+      type: query
+      description: Language code used for the items' strings. If the authenticated user makes the request, the content will return with the user's configured language.
+      disabled: true
+    - name: language
+      value: cs
+      type: query
+      description: Language code used for the items' strings. If the authenticated user makes the request, the content will return with the user's configured language.
+      disabled: true
+    - name: language
+      value: da
+      type: query
+      description: Language code used for the items' strings. If the authenticated user makes the request, the content will return with the user's configured language.
+      disabled: true
+    - name: language
+      value: de
+      type: query
+      description: Language code used for the items' strings. If the authenticated user makes the request, the content will return with the user's configured language.
+      disabled: true
+    - name: language
+      value: en
+      type: query
+      description: Language code used for the items' strings. If the authenticated user makes the request, the content will return with the user's configured language.
+      disabled: true
+    - name: language
+      value: en@pirate
+      type: query
+      description: Language code used for the items' strings. If the authenticated user makes the request, the content will return with the user's configured language.
+      disabled: true
+    - name: language
+      value: en_GB
+      type: query
+      description: Language code used for the items' strings. If the authenticated user makes the request, the content will return with the user's configured language.
+      disabled: true
+    - name: language
+      value: es
+      type: query
+      description: Language code used for the items' strings. If the authenticated user makes the request, the content will return with the user's configured language.
+      disabled: true
+    - name: language
+      value: es_419
+      type: query
+      description: Language code used for the items' strings. If the authenticated user makes the request, the content will return with the user's configured language.
+      disabled: true
+    - name: language
+      value: fr
+      type: query
+      description: Language code used for the items' strings. If the authenticated user makes the request, the content will return with the user's configured language.
+      disabled: true
+    - name: language
+      value: he
+      type: query
+      description: Language code used for the items' strings. If the authenticated user makes the request, the content will return with the user's configured language.
+      disabled: true
+    - name: language
+      value: hu
+      type: query
+      description: Language code used for the items' strings. If the authenticated user makes the request, the content will return with the user's configured language.
+      disabled: true
+    - name: language
+      value: id
+      type: query
+      description: Language code used for the items' strings. If the authenticated user makes the request, the content will return with the user's configured language.
+      disabled: true
+    - name: language
+      value: it
+      type: query
+      description: Language code used for the items' strings. If the authenticated user makes the request, the content will return with the user's configured language.
+      disabled: true
+    - name: language
+      value: ja
+      type: query
+      description: Language code used for the items' strings. If the authenticated user makes the request, the content will return with the user's configured language.
+      disabled: true
+    - name: language
+      value: nl
+      type: query
+      description: Language code used for the items' strings. If the authenticated user makes the request, the content will return with the user's configured language.
+      disabled: true
+    - name: language
+      value: pl
+      type: query
+      description: Language code used for the items' strings. If the authenticated user makes the request, the content will return with the user's configured language.
+      disabled: true
+    - name: language
+      value: pt
+      type: query
+      description: Language code used for the items' strings. If the authenticated user makes the request, the content will return with the user's configured language.
+      disabled: true
+    - name: language
+      value: pt_BR
+      type: query
+      description: Language code used for the items' strings. If the authenticated user makes the request, the content will return with the user's configured language.
+      disabled: true
+    - name: language
+      value: ro
+      type: query
+      description: Language code used for the items' strings. If the authenticated user makes the request, the content will return with the user's configured language.
+      disabled: true
+    - name: language
+      value: ru
+      type: query
+      description: Language code used for the items' strings. If the authenticated user makes the request, the content will return with the user's configured language.
+      disabled: true
+    - name: language
+      value: sk
+      type: query
+      description: Language code used for the items' strings. If the authenticated user makes the request, the content will return with the user's configured language.
+      disabled: true
+    - name: language
+      value: sr
+      type: query
+      description: Language code used for the items' strings. If the authenticated user makes the request, the content will return with the user's configured language.
+      disabled: true
+    - name: language
+      value: sv
+      type: query
+      description: Language code used for the items' strings. If the authenticated user makes the request, the content will return with the user's configured language.
+      disabled: true
+    - name: language
+      value: uk
+      type: query
+      description: Language code used for the items' strings. If the authenticated user makes the request, the content will return with the user's configured language.
+      disabled: true
+    - name: language
+      value: zh
+      type: query
+      description: Language code used for the items' strings. If the authenticated user makes the request, the content will return with the user's configured language.
+      disabled: true
+    - name: language
+      value: zh_TW
+      type: query
+      description: Language code used for the items' strings. If the authenticated user makes the request, the content will return with the user's configured language.
+      disabled: true
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success 200
+    request:
+      url: "{{baseUrl}}/api/v3/content"
+      method: GET
+      params:
+        - name: language
+          value: bg
+          type: query
+          description: Language code used for the items' strings. If the authenticated user makes the request, the content will return with the user's configured language.
+          disabled: true
+        - name: language
+          value: cs
+          type: query
+          description: Language code used for the items' strings. If the authenticated user makes the request, the content will return with the user's configured language.
+          disabled: true
+        - name: language
+          value: da
+          type: query
+          description: Language code used for the items' strings. If the authenticated user makes the request, the content will return with the user's configured language.
+          disabled: true
+        - name: language
+          value: de
+          type: query
+          description: Language code used for the items' strings. If the authenticated user makes the request, the content will return with the user's configured language.
+          disabled: true
+        - name: language
+          value: en
+          type: query
+          description: Language code used for the items' strings. If the authenticated user makes the request, the content will return with the user's configured language.
+          disabled: true
+        - name: language
+          value: en@pirate
+          type: query
+          description: Language code used for the items' strings. If the authenticated user makes the request, the content will return with the user's configured language.
+          disabled: true
+        - name: language
+          value: en_GB
+          type: query
+          description: Language code used for the items' strings. If the authenticated user makes the request, the content will return with the user's configured language.
+          disabled: true
+        - name: language
+          value: es
+          type: query
+          description: Language code used for the items' strings. If the authenticated user makes the request, the content will return with the user's configured language.
+          disabled: true
+        - name: language
+          value: es_419
+          type: query
+          description: Language code used for the items' strings. If the authenticated user makes the request, the content will return with the user's configured language.
+          disabled: true
+        - name: language
+          value: fr
+          type: query
+          description: Language code used for the items' strings. If the authenticated user makes the request, the content will return with the user's configured language.
+          disabled: true
+        - name: language
+          value: he
+          type: query
+          description: Language code used for the items' strings. If the authenticated user makes the request, the content will return with the user's configured language.
+          disabled: true
+        - name: language
+          value: hu
+          type: query
+          description: Language code used for the items' strings. If the authenticated user makes the request, the content will return with the user's configured language.
+          disabled: true
+        - name: language
+          value: id
+          type: query
+          description: Language code used for the items' strings. If the authenticated user makes the request, the content will return with the user's configured language.
+          disabled: true
+        - name: language
+          value: it
+          type: query
+          description: Language code used for the items' strings. If the authenticated user makes the request, the content will return with the user's configured language.
+          disabled: true
+        - name: language
+          value: ja
+          type: query
+          description: Language code used for the items' strings. If the authenticated user makes the request, the content will return with the user's configured language.
+          disabled: true
+        - name: language
+          value: nl
+          type: query
+          description: Language code used for the items' strings. If the authenticated user makes the request, the content will return with the user's configured language.
+          disabled: true
+        - name: language
+          value: pl
+          type: query
+          description: Language code used for the items' strings. If the authenticated user makes the request, the content will return with the user's configured language.
+          disabled: true
+        - name: language
+          value: pt
+          type: query
+          description: Language code used for the items' strings. If the authenticated user makes the request, the content will return with the user's configured language.
+          disabled: true
+        - name: language
+          value: pt_BR
+          type: query
+          description: Language code used for the items' strings. If the authenticated user makes the request, the content will return with the user's configured language.
+          disabled: true
+        - name: language
+          value: ro
+          type: query
+          description: Language code used for the items' strings. If the authenticated user makes the request, the content will return with the user's configured language.
+          disabled: true
+        - name: language
+          value: ru
+          type: query
+          description: Language code used for the items' strings. If the authenticated user makes the request, the content will return with the user's configured language.
+          disabled: true
+        - name: language
+          value: sk
+          type: query
+          description: Language code used for the items' strings. If the authenticated user makes the request, the content will return with the user's configured language.
+          disabled: true
+        - name: language
+          value: sr
+          type: query
+          description: Language code used for the items' strings. If the authenticated user makes the request, the content will return with the user's configured language.
+          disabled: true
+        - name: language
+          value: sv
+          type: query
+          description: Language code used for the items' strings. If the authenticated user makes the request, the content will return with the user's configured language.
+          disabled: true
+        - name: language
+          value: uk
+          type: query
+          description: Language code used for the items' strings. If the authenticated user makes the request, the content will return with the user's configured language.
+          disabled: true
+        - name: language
+          value: zh
+          type: query
+          description: Language code used for the items' strings. If the authenticated user makes the request, the content will return with the user's configured language.
+          disabled: true
+        - name: language
+          value: zh_TW
+          type: query
+          description: Language code used for the items' strings. If the authenticated user makes the request, the content will return with the user's configured language.
+          disabled: true
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "data": {},
+            "data.mystery": {},
+            "data.gear": {},
+            "data.gear.tree": {},
+            "data.gear.flat": {},
+            "data.spells": {},
+            "data.potion": {},
+            "data.armoire": {},
+            "data.classes": [
+              {}
+            ],
+            "data.eggs": {},
+            "data.timeTravelStable": {},
+            "data.hatchingPotions": {},
+            "data.petInfo": {},
+            "data.mountInfo": {},
+            "data.food": {},
+            "data.userCanOwnQuestCategories": [
+              {}
+            ],
+            "data.quests": {},
+            "data.appearances": {},
+            "data.appearances.hair": {},
+            "data.appearances.shirt": {},
+            "data.appearances.size": {},
+            "data.appearances.skin": {},
+            "data.appearances.chair": {},
+            "data.appearances.background": {},
+            "data.backgrounds": {},
+            "data.subscriptionBlocks": {}
+          }

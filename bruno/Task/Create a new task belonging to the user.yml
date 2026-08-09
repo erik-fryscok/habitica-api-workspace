@@ -1,0 +1,272 @@
+info:
+  name: Create a new task belonging to the user
+  type: http
+  seq: 10
+  tags:
+    - Task
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/v3/tasks/user"
+  body:
+    type: json
+    data: |-
+      {
+        "text": "",
+        "type": "habit",
+        "tags": [],
+        "alias": "",
+        "attribute": "str",
+        "checklist": [
+          {}
+        ],
+        "collapseChecklist": false,
+        "notes": "",
+        "date": "",
+        "priority": 0.1,
+        "reminders": [],
+        "frequency": "daily",
+        "repeat": "",
+        "everyX": 0,
+        "streak": 0,
+        "daysOfMonth": [],
+        "weeksOfMonth": [],
+        "startDate": "",
+        "up": false,
+        "down": false,
+        "value": 0
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 201 Response
+    description: "201"
+    request:
+      url: "{{baseUrl}}/api/v3/tasks/user"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "text": "",
+            "type": "habit",
+            "tags": [],
+            "alias": "",
+            "attribute": "str",
+            "checklist": [
+              {}
+            ],
+            "collapseChecklist": false,
+            "notes": "",
+            "date": "",
+            "priority": 0.1,
+            "reminders": [],
+            "frequency": "daily",
+            "repeat": "",
+            "everyX": 0,
+            "streak": 0,
+            "daysOfMonth": [],
+            "weeksOfMonth": [],
+            "startDate": "",
+            "up": false,
+            "down": false,
+            "value": 0
+          }
+    response:
+      status: 201
+      statusText: Created
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "success": true,
+            "data": {
+              "userId": "b0413351-405f-416f-8787-947ec1c85199",
+              "alias": "hab-api-tasks",
+              "text": "Update Habitica API Documentation - Tasks",
+              "type": "todo",
+              "notes": "Update the tasks api on GitHub",
+              "tags": [
+                "ed427623-9a69-4aac-9852-13deb9c190c3"
+              ],
+              "value": 0,
+              "priority": 2,
+              "attribute": "str",
+              "challenge": {},
+              "group": {
+                "assignedUsers": [],
+                "approval": {
+                  "required": false,
+                  "approved": false,
+                  "requested": false
+                }
+              },
+              "reminders": [],
+              "_id": "829d435b-edc4-498c-a30e-e52361a0f35a",
+              "createdAt": "2017-01-12T02:11:02.876Z",
+              "updatedAt": "2017-01-12T02:11:02.876Z",
+              "checklist": [
+                {
+                  "completed": true,
+                  "text": "read wiki",
+                  "id": "91edadda-fb62-4e6e-b110-aff26f936678"
+                },
+                {
+                  "completed": false,
+                  "text": "write code",
+                  "id": "d1ddad50-ab22-49c4-8261-9996ae337b6a"
+                }
+              ],
+              "collapseChecklist": false,
+              "completed": false,
+              "id": "829d435b-edc4-498c-a30e-e52361a0f35a"
+            },
+            "notifications": []
+          }
+  - name: 400 Response
+    description: "400"
+    request:
+      url: "{{baseUrl}}/api/v3/tasks/user"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "text": "",
+            "type": "habit",
+            "tags": [],
+            "alias": "",
+            "attribute": "str",
+            "checklist": [
+              {}
+            ],
+            "collapseChecklist": false,
+            "notes": "",
+            "date": "",
+            "priority": 0.1,
+            "reminders": [],
+            "frequency": "daily",
+            "repeat": "",
+            "everyX": 0,
+            "streak": 0,
+            "daysOfMonth": [],
+            "weeksOfMonth": [],
+            "startDate": "",
+            "up": false,
+            "down": false,
+            "value": 0
+          }
+    response:
+      status: 400
+      statusText: Bad Request
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "MustBeType": {},
+            "Text-ValidationFailed": {},
+            "Alias-ValidationFailed": {},
+            "Value-ValidationFailed": {}
+          }
+  - name: 401 Response
+    description: "401"
+    request:
+      url: "{{baseUrl}}/api/v3/tasks/user"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "text": "",
+            "type": "habit",
+            "tags": [],
+            "alias": "",
+            "attribute": "str",
+            "checklist": [
+              {}
+            ],
+            "collapseChecklist": false,
+            "notes": "",
+            "date": "",
+            "priority": 0.1,
+            "reminders": [],
+            "frequency": "daily",
+            "repeat": "",
+            "everyX": 0,
+            "streak": 0,
+            "daysOfMonth": [],
+            "weeksOfMonth": [],
+            "startDate": "",
+            "up": false,
+            "down": false,
+            "value": 0
+          }
+    response:
+      status: 401
+      statusText: Unauthorized
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "NoAccount": {}
+          }
+  - name: 404 Response
+    description: "404"
+    request:
+      url: "{{baseUrl}}/api/v3/tasks/user"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "text": "",
+            "type": "habit",
+            "tags": [],
+            "alias": "",
+            "attribute": "str",
+            "checklist": [
+              {}
+            ],
+            "collapseChecklist": false,
+            "notes": "",
+            "date": "",
+            "priority": 0.1,
+            "reminders": [],
+            "frequency": "daily",
+            "repeat": "",
+            "everyX": 0,
+            "streak": 0,
+            "daysOfMonth": [],
+            "weeksOfMonth": [],
+            "startDate": "",
+            "up": false,
+            "down": false,
+            "value": 0
+          }
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "ChecklistNotFound": {}
+          }

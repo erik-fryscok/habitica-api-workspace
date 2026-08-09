@@ -1,0 +1,70 @@
+info:
+  name: Buy special item (card, avatar transformation)
+  type: http
+  seq: 19
+  tags:
+    - User
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/v3/user/buy-special-spell/:key"
+  params:
+    - name: key
+      value: ""
+      type: path
+      description: The special item to buy. Must be one of the keys from "content.special", such as birthday, snowball, salt.
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success 200
+    request:
+      url: "{{baseUrl}}/api/v3/user/buy-special-spell/:key"
+      method: POST
+      params:
+        - name: key
+          value: ""
+          type: path
+          description: The special item to buy. Must be one of the keys from "content.special", such as birthday, snowball, salt.
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "success": true,
+            "data": {},
+            "message": "Bought Greeting Card"
+          }
+  - name: 400 Response
+    description: "400"
+    request:
+      url: "{{baseUrl}}/api/v3/user/buy-special-spell/:key"
+      method: POST
+      params:
+        - name: key
+          value: ""
+          type: path
+          description: The special item to buy. Must be one of the keys from "content.special", such as birthday, snowball, salt.
+    response:
+      status: 400
+      statusText: Bad Request
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "messageNotEnoughGold": {}
+          }

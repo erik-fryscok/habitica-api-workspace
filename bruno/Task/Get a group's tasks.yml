@@ -1,0 +1,88 @@
+info:
+  name: Get a group's tasks
+  type: http
+  seq: 9
+  tags:
+    - Task
+
+http:
+  method: GET
+  url: "{{baseUrl}}/api/v3/tasks/group/:groupId"
+  params:
+    - name: groupId
+      value: ""
+      type: path
+      description: The id of the group from which to retrieve the tasks
+    - name: type
+      value: habits
+      type: query
+      description: Query parameter to return just a type of tasks
+      disabled: true
+    - name: type
+      value: dailys
+      type: query
+      description: Query parameter to return just a type of tasks
+      disabled: true
+    - name: type
+      value: todos
+      type: query
+      description: Query parameter to return just a type of tasks
+      disabled: true
+    - name: type
+      value: rewards
+      type: query
+      description: Query parameter to return just a type of tasks
+      disabled: true
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success 200
+    request:
+      url: "{{baseUrl}}/api/v3/tasks/group/:groupId"
+      method: GET
+      params:
+        - name: groupId
+          value: ""
+          type: path
+          description: The id of the group from which to retrieve the tasks
+        - name: type
+          value: habits
+          type: query
+          description: Query parameter to return just a type of tasks
+          disabled: true
+        - name: type
+          value: dailys
+          type: query
+          description: Query parameter to return just a type of tasks
+          disabled: true
+        - name: type
+          value: todos
+          type: query
+          description: Query parameter to return just a type of tasks
+          disabled: true
+        - name: type
+          value: rewards
+          type: query
+          description: Query parameter to return just a type of tasks
+          disabled: true
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "data": [
+              {}
+            ]
+          }

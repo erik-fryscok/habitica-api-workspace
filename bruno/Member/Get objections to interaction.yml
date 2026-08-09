@@ -1,0 +1,66 @@
+info:
+  name: Get objections to interaction
+  type: http
+  seq: 8
+  tags:
+    - Member
+
+http:
+  method: GET
+  url: "{{baseUrl}}/api/v3/members/:toUserId/objections/:interaction"
+  params:
+    - name: toUserId
+      value: ""
+      type: path
+      description: The user to interact with
+    - name: interaction
+      value: send-private-message
+      type: path
+      description: Name of the interaction to query.
+    - name: interaction
+      value: transfer-gems
+      type: path
+      description: Name of the interaction to query.
+      disabled: true
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success 200
+    request:
+      url: "{{baseUrl}}/api/v3/members/:toUserId/objections/:interaction"
+      method: GET
+      params:
+        - name: toUserId
+          value: ""
+          type: path
+          description: The user to interact with
+        - name: interaction
+          value: send-private-message
+          type: path
+          description: Name of the interaction to query.
+        - name: interaction
+          value: transfer-gems
+          type: path
+          description: Name of the interaction to query.
+          disabled: true
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "data": [
+              {}
+            ]
+          }

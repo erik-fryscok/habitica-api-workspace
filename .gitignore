@@ -1,0 +1,7 @@
+.DS_Store
+.env*
+!.env.example
+node_modules/
+scripts/migrations/
+bruno/environments/*.yml
+!bruno/environments/Environment.example.yml

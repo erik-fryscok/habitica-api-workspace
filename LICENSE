@@ -1,0 +1,8 @@
+# Licensing
+
+This repository contains material under more than one license.
+
+- Original tooling, schemas, examples, tests, and repository configuration are licensed under GPL-3.0-only. The full text is in [LICENSES/GPL-3.0.txt](LICENSES/GPL-3.0.txt).
+- Generated API documentation artifacts in `openapi/` and `bruno/` include material derived from Habitica documentation and are provided under CC-BY-NC-SA-3.0. The full text is in [LICENSES/CC-BY-NC-SA-3.0.txt](LICENSES/CC-BY-NC-SA-3.0.txt).
+
+See [NOTICE.md](NOTICE.md) for attribution and provenance.

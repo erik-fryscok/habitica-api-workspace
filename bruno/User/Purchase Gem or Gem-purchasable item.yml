@@ -1,0 +1,208 @@
+info:
+  name: Purchase Gem or Gem-purchasable item
+  type: http
+  seq: 36
+  tags:
+    - User
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/v3/user/purchase/:type/:key"
+  params:
+    - name: type
+      value: gems
+      type: path
+      description: Type of item to purchase.
+    - name: type
+      value: eggs
+      type: path
+      description: Type of item to purchase.
+      disabled: true
+    - name: type
+      value: hatchingPotions
+      type: path
+      description: Type of item to purchase.
+      disabled: true
+    - name: type
+      value: premiumHatchingPotions
+      type: path
+      description: Type of item to purchase.
+      disabled: true
+    - name: type
+      value: food
+      type: path
+      description: Type of item to purchase.
+      disabled: true
+    - name: type
+      value: quests
+      type: path
+      description: Type of item to purchase.
+      disabled: true
+    - name: type
+      value: gear
+      type: path
+      description: Type of item to purchase.
+      disabled: true
+    - name: type
+      value: pets
+      type: path
+      description: Type of item to purchase.
+      disabled: true
+    - name: key
+      value: ""
+      type: path
+      description: Item's key (use "gem" for purchasing gems)
+  body:
+    type: json
+    data: |-
+      {
+        "quantity": 0
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success 200
+    request:
+      url: "{{baseUrl}}/api/v3/user/purchase/:type/:key"
+      method: POST
+      params:
+        - name: type
+          value: gems
+          type: path
+          description: Type of item to purchase.
+        - name: type
+          value: eggs
+          type: path
+          description: Type of item to purchase.
+          disabled: true
+        - name: type
+          value: hatchingPotions
+          type: path
+          description: Type of item to purchase.
+          disabled: true
+        - name: type
+          value: premiumHatchingPotions
+          type: path
+          description: Type of item to purchase.
+          disabled: true
+        - name: type
+          value: food
+          type: path
+          description: Type of item to purchase.
+          disabled: true
+        - name: type
+          value: quests
+          type: path
+          description: Type of item to purchase.
+          disabled: true
+        - name: type
+          value: gear
+          type: path
+          description: Type of item to purchase.
+          disabled: true
+        - name: type
+          value: pets
+          type: path
+          description: Type of item to purchase.
+          disabled: true
+        - name: key
+          value: ""
+          type: path
+          description: Item's key (use "gem" for purchasing gems)
+      body:
+        type: json
+        data: |-
+          {
+            "quantity": 0
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "data.items": {},
+            "data.balance": 0,
+            "message": ""
+          }
+  - name: 400 Response
+    description: Error 4xx
+    request:
+      url: "{{baseUrl}}/api/v3/user/purchase/:type/:key"
+      method: POST
+      params:
+        - name: type
+          value: gems
+          type: path
+          description: Type of item to purchase.
+        - name: type
+          value: eggs
+          type: path
+          description: Type of item to purchase.
+          disabled: true
+        - name: type
+          value: hatchingPotions
+          type: path
+          description: Type of item to purchase.
+          disabled: true
+        - name: type
+          value: premiumHatchingPotions
+          type: path
+          description: Type of item to purchase.
+          disabled: true
+        - name: type
+          value: food
+          type: path
+          description: Type of item to purchase.
+          disabled: true
+        - name: type
+          value: quests
+          type: path
+          description: Type of item to purchase.
+          disabled: true
+        - name: type
+          value: gear
+          type: path
+          description: Type of item to purchase.
+          disabled: true
+        - name: type
+          value: pets
+          type: path
+          description: Type of item to purchase.
+          disabled: true
+        - name: key
+          value: ""
+          type: path
+          description: Item's key (use "gem" for purchasing gems)
+      body:
+        type: json
+        data: |-
+          {
+            "quantity": 0
+          }
+    response:
+      status: 400
+      statusText: Bad Request
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "NotAvailable": {},
+            "Gems": {},
+            "Key": {},
+            "Type": {}
+          }

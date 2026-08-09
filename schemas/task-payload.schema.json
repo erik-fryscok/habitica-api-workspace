@@ -1,0 +1,437 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://habitica.local/schemas/task-payload.schema.json",
+  "title": "Habitica Task Payload Schemas",
+  "description": "Schemas for validating task create and task update payloads before calling Habitica APIs.",
+  "$defs": {
+    "uuid": {
+      "type": "string",
+      "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$"
+    },
+    "taskType": {
+      "type": "string",
+      "enum": [
+        "habit",
+        "daily",
+        "todo",
+        "reward"
+      ]
+    },
+    "attribute": {
+      "type": "string",
+      "enum": [
+        "str",
+        "int",
+        "per",
+        "con"
+      ]
+    },
+    "priority": {
+      "type": "number",
+      "enum": [
+        0.1,
+        1,
+        1.5,
+        2
+      ]
+    },
+    "frequency": {
+      "type": "string",
+      "enum": [
+        "daily",
+        "weekly",
+        "monthly",
+        "yearly"
+      ]
+    },
+    "dateLike": {
+      "type": "string",
+      "minLength": 1
+    },
+    "checklistItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "completed": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "text"
+      ]
+    },
+    "repeatSchedule": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "su": {
+          "type": "boolean"
+        },
+        "m": {
+          "type": "boolean"
+        },
+        "t": {
+          "type": "boolean"
+        },
+        "w": {
+          "type": "boolean"
+        },
+        "th": {
+          "type": "boolean"
+        },
+        "f": {
+          "type": "boolean"
+        },
+        "s": {
+          "type": "boolean"
+        }
+      },
+      "minProperties": 1
+    },
+    "reminder": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/uuid"
+        },
+        "startDate": {
+          "$ref": "#/$defs/dateLike"
+        },
+        "time": {
+          "$ref": "#/$defs/dateLike"
+        }
+      },
+      "required": [
+        "id",
+        "startDate",
+        "time"
+      ]
+    },
+    "baseTaskPayload": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "$ref": "#/$defs/taskType"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/uuid"
+          }
+        },
+        "alias": {
+          "type": "string",
+          "minLength": 1
+        },
+        "attribute": {
+          "$ref": "#/$defs/attribute"
+        },
+        "checklist": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/checklistItem"
+          }
+        },
+        "collapseChecklist": {
+          "type": "boolean",
+          "default": false
+        },
+        "notes": {
+          "type": "string"
+        },
+        "date": {
+          "$ref": "#/$defs/dateLike"
+        },
+        "priority": {
+          "$ref": "#/$defs/priority"
+        },
+        "reminders": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/reminder"
+          }
+        },
+        "frequency": {
+          "$ref": "#/$defs/frequency"
+        },
+        "repeat": {
+          "$ref": "#/$defs/repeatSchedule"
+        },
+        "everyX": {
+          "type": "number",
+          "minimum": 1,
+          "default": 1
+        },
+        "streak": {
+          "type": "number",
+          "minimum": 0,
+          "default": 0
+        },
+        "daysOfMonth": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 31
+          }
+        },
+        "weeksOfMonth": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 5
+          }
+        },
+        "startDate": {
+          "$ref": "#/$defs/dateLike"
+        },
+        "up": {
+          "type": "boolean",
+          "default": true
+        },
+        "down": {
+          "type": "boolean",
+          "default": true
+        },
+        "value": {
+          "type": "number",
+          "minimum": 0,
+          "default": 0
+        }
+      }
+    },
+    "dailyOnlyFields": {
+      "anyOf": [
+        {
+          "required": [
+            "frequency"
+          ]
+        },
+        {
+          "required": [
+            "repeat"
+          ]
+        },
+        {
+          "required": [
+            "everyX"
+          ]
+        },
+        {
+          "required": [
+            "streak"
+          ]
+        },
+        {
+          "required": [
+            "daysOfMonth"
+          ]
+        },
+        {
+          "required": [
+            "weeksOfMonth"
+          ]
+        },
+        {
+          "required": [
+            "startDate"
+          ]
+        }
+      ]
+    },
+    "habitOnlyFields": {
+      "anyOf": [
+        {
+          "required": [
+            "up"
+          ]
+        },
+        {
+          "required": [
+            "down"
+          ]
+        }
+      ]
+    },
+    "rewardOnlyFields": {
+      "required": [
+        "value"
+      ]
+    },
+    "todoOnlyFields": {
+      "required": [
+        "date"
+      ]
+    },
+    "createPayload": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/baseTaskPayload"
+        },
+        {
+          "required": [
+            "text",
+            "type"
+          ]
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "daily"
+              }
+            }
+          },
+          "else": {
+            "not": {
+              "$ref": "#/$defs/dailyOnlyFields"
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "habit"
+              }
+            }
+          },
+          "else": {
+            "not": {
+              "$ref": "#/$defs/habitOnlyFields"
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "reward"
+              }
+            }
+          },
+          "else": {
+            "not": {
+              "$ref": "#/$defs/rewardOnlyFields"
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "todo"
+              }
+            }
+          },
+          "else": {
+            "not": {
+              "$ref": "#/$defs/todoOnlyFields"
+            }
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "repeat"
+            ]
+          },
+          "then": {
+            "properties": {
+              "frequency": {
+                "const": "weekly"
+              }
+            },
+            "required": [
+              "frequency"
+            ]
+          }
+        },
+        {
+          "if": {
+            "anyOf": [
+              {
+                "required": [
+                  "daysOfMonth"
+                ]
+              },
+              {
+                "required": [
+                  "weeksOfMonth"
+                ]
+              }
+            ]
+          },
+          "then": {
+            "properties": {
+              "frequency": {
+                "const": "monthly"
+              }
+            },
+            "required": [
+              "frequency"
+            ]
+          }
+        }
+      ]
+    },
+    "updatePayload": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/baseTaskPayload"
+        },
+        {
+          "minProperties": 1
+        },
+        {
+          "if": {
+            "required": [
+              "repeat"
+            ]
+          },
+          "then": {
+            "properties": {
+              "frequency": {
+                "const": "weekly"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "anyOf": [
+              {
+                "required": [
+                  "daysOfMonth"
+                ]
+              },
+              {
+                "required": [
+                  "weeksOfMonth"
+                ]
+              }
+            ]
+          },
+          "then": {
+            "properties": {
+              "frequency": {
+                "const": "monthly"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

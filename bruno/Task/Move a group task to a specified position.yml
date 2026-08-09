@@ -1,0 +1,64 @@
+info:
+  name: Move a group task to a specified position
+  type: http
+  seq: 15
+  tags:
+    - Task
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/v3/group/:groupId/tasks/:taskId/move/to/:position"
+  params:
+    - name: groupId
+      value: ""
+      type: path
+      description: "Path parameter: groupId"
+    - name: taskId
+      value: ""
+      type: path
+      description: The task _id
+    - name: position
+      value: ""
+      type: path
+      description: Where to move the task. 0 = top of the list ("push to top"). -1 = bottom of the list ("push to bottom").
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success 200
+    request:
+      url: "{{baseUrl}}/api/v3/group/:groupId/tasks/:taskId/move/to/:position"
+      method: POST
+      params:
+        - name: groupId
+          value: ""
+          type: path
+          description: "Path parameter: groupId"
+        - name: taskId
+          value: ""
+          type: path
+          description: The task _id
+        - name: position
+          value: ""
+          type: path
+          description: Where to move the task. 0 = top of the list ("push to top"). -1 = bottom of the list ("push to bottom").
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "data": [
+              {}
+            ]
+          }

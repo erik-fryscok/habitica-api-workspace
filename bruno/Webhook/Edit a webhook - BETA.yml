@@ -1,0 +1,136 @@
+info:
+  name: Edit a webhook - BETA
+  type: http
+  seq: 4
+  tags:
+    - Webhook
+
+http:
+  method: PUT
+  url: "{{baseUrl}}/api/v3/user/webhook/:id"
+  params:
+    - name: id
+      value: ""
+      type: path
+      description: URL parameter - The id of the webhook to update
+  body:
+    type: json
+    data: |-
+      {
+        "url": "",
+        "label": "",
+        "enabled": false,
+        "type": "taskActivity",
+        "options": {}
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success 200
+    request:
+      url: "{{baseUrl}}/api/v3/user/webhook/:id"
+      method: PUT
+      params:
+        - name: id
+          value: ""
+          type: path
+          description: URL parameter - The id of the webhook to update
+      body:
+        type: json
+        data: |-
+          {
+            "url": "",
+            "label": "",
+            "enabled": false,
+            "type": "taskActivity",
+            "options": {}
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "data": {},
+            "data.id": "",
+            "data.url": "",
+            "data.label": "",
+            "data.enabled": false,
+            "data.type": "",
+            "data.options": {}
+          }
+  - name: 400 Response
+    description: "400"
+    request:
+      url: "{{baseUrl}}/api/v3/user/webhook/:id"
+      method: PUT
+      params:
+        - name: id
+          value: ""
+          type: path
+          description: URL parameter - The id of the webhook to update
+      body:
+        type: json
+        data: |-
+          {
+            "url": "",
+            "label": "",
+            "enabled": false,
+            "type": "taskActivity",
+            "options": {}
+          }
+    response:
+      status: 400
+      statusText: Bad Request
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "WebhookBodyInvalid": {}
+          }
+  - name: 404 Response
+    description: "404"
+    request:
+      url: "{{baseUrl}}/api/v3/user/webhook/:id"
+      method: PUT
+      params:
+        - name: id
+          value: ""
+          type: path
+          description: URL parameter - The id of the webhook to update
+      body:
+        type: json
+        data: |-
+          {
+            "url": "",
+            "label": "",
+            "enabled": false,
+            "type": "taskActivity",
+            "options": {}
+          }
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "WebhookNotFound": {}
+          }

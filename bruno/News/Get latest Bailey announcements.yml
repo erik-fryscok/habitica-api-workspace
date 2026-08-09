@@ -1,0 +1,50 @@
+info:
+  name: Get latest Bailey announcements
+  type: http
+  seq: 2
+  tags:
+    - News
+
+http:
+  method: GET
+  url: "{{baseUrl}}/api/v4/news"
+  params:
+    - name: page
+      value: ""
+      type: query
+      description: This parameter can be used to specify the page number (the initial page is number 0 and not required).
+      disabled: true
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success 200
+    request:
+      url: "{{baseUrl}}/api/v4/news"
+      method: GET
+      params:
+        - name: page
+          value: ""
+          type: query
+          description: This parameter can be used to specify the page number (the initial page is number 0 and not required).
+          disabled: true
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "Data": [
+              {}
+            ]
+          }

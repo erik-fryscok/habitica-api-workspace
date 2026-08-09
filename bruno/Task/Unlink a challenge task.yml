@@ -1,0 +1,126 @@
+info:
+  name: Unlink a challenge task
+  type: http
+  seq: 24
+  tags:
+    - Task
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/v3/tasks/unlink-one/:taskId"
+  params:
+    - name: taskId
+      value: ""
+      type: path
+      description: The task _id or alias
+    - name: keep
+      value: "'keep'"
+      type: query
+      description: Specifies if the task should be kept(keep) or removed(remove).
+    - name: keep
+      value: "'remove'"
+      type: query
+      description: Specifies if the task should be kept(keep) or removed(remove).
+      disabled: true
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success 200
+    request:
+      url: "{{baseUrl}}/api/v3/tasks/unlink-one/:taskId"
+      method: POST
+      params:
+        - name: taskId
+          value: ""
+          type: path
+          description: The task _id or alias
+        - name: keep
+          value: "'keep'"
+          type: query
+          description: Specifies if the task should be kept(keep) or removed(remove).
+        - name: keep
+          value: "'remove'"
+          type: query
+          description: Specifies if the task should be kept(keep) or removed(remove).
+          disabled: true
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "data": {}
+          }
+  - name: 400 Response
+    description: "400"
+    request:
+      url: "{{baseUrl}}/api/v3/tasks/unlink-one/:taskId"
+      method: POST
+      params:
+        - name: taskId
+          value: ""
+          type: path
+          description: The task _id or alias
+        - name: keep
+          value: "'keep'"
+          type: query
+          description: Specifies if the task should be kept(keep) or removed(remove).
+        - name: keep
+          value: "'remove'"
+          type: query
+          description: Specifies if the task should be kept(keep) or removed(remove).
+          disabled: true
+    response:
+      status: 400
+      statusText: Bad Request
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "Broken": {}
+          }
+  - name: 404 Response
+    description: "404"
+    request:
+      url: "{{baseUrl}}/api/v3/tasks/unlink-one/:taskId"
+      method: POST
+      params:
+        - name: taskId
+          value: ""
+          type: path
+          description: The task _id or alias
+        - name: keep
+          value: "'keep'"
+          type: query
+          description: Specifies if the task should be kept(keep) or removed(remove).
+        - name: keep
+          value: "'remove'"
+          type: query
+          description: Specifies if the task should be kept(keep) or removed(remove).
+          disabled: true
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "TaskNotFound": {}
+          }

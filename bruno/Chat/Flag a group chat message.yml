@@ -1,0 +1,142 @@
+info:
+  name: Flag a group chat message
+  type: http
+  seq: 3
+  tags:
+    - Chat
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/v3/groups/:groupId/chat/:chatId/flag"
+  params:
+    - name: groupId
+      value: ""
+      type: path
+      description: The group id ('party' for the user party and 'habitrpg' for tavern are accepted)
+    - name: chatId
+      value: ""
+      type: path
+      description: The chat message id
+  body:
+    type: json
+    data: |-
+      {
+        "comment": ""
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success 200
+    request:
+      url: "{{baseUrl}}/api/v3/groups/:groupId/chat/:chatId/flag"
+      method: POST
+      params:
+        - name: groupId
+          value: ""
+          type: path
+          description: The group id ('party' for the user party and 'habitrpg' for tavern are accepted)
+        - name: chatId
+          value: ""
+          type: path
+          description: The chat message id
+      body:
+        type: json
+        data: |-
+          {
+            "comment": ""
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "data": {},
+            "data.id": "",
+            "data.text": "",
+            "data.timestamp": 0,
+            "data.likes": {},
+            "data.flags": {},
+            "data.flagCount": 0,
+            "data.uuid": "",
+            "data.user": ""
+          }
+  - name: 400 Response
+    description: "400"
+    request:
+      url: "{{baseUrl}}/api/v3/groups/:groupId/chat/:chatId/flag"
+      method: POST
+      params:
+        - name: groupId
+          value: ""
+          type: path
+          description: The group id ('party' for the user party and 'habitrpg' for tavern are accepted)
+        - name: chatId
+          value: ""
+          type: path
+          description: The chat message id
+      body:
+        type: json
+        data: |-
+          {
+            "comment": ""
+          }
+    response:
+      status: 400
+      statusText: Bad Request
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "groupIdRequired": {},
+            "chatIdRequired": {}
+          }
+  - name: 404 Response
+    description: "404"
+    request:
+      url: "{{baseUrl}}/api/v3/groups/:groupId/chat/:chatId/flag"
+      method: POST
+      params:
+        - name: groupId
+          value: ""
+          type: path
+          description: The group id ('party' for the user party and 'habitrpg' for tavern are accepted)
+        - name: chatId
+          value: ""
+          type: path
+          description: The chat message id
+      body:
+        type: json
+        data: |-
+          {
+            "comment": ""
+          }
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "AlreadyFlagged": {},
+            "messageGroupChatFlagAlreadyReported": {},
+            "GroupNotFound": {},
+            "MessageNotFound": {}
+          }

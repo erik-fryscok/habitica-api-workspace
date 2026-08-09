@@ -1,0 +1,196 @@
+info:
+  name: Get a challenge's tasks
+  type: http
+  seq: 7
+  tags:
+    - Task
+
+http:
+  method: GET
+  url: "{{baseUrl}}/api/v3/tasks/challenge/:challengeId"
+  params:
+    - name: challengeId
+      value: ""
+      type: path
+      description: The id of the challenge from which to retrieve the tasks
+    - name: type
+      value: habits
+      type: query
+      description: Query parameter to return just a type of tasks.
+      disabled: true
+    - name: type
+      value: dailys
+      type: query
+      description: Query parameter to return just a type of tasks.
+      disabled: true
+    - name: type
+      value: todos
+      type: query
+      description: Query parameter to return just a type of tasks.
+      disabled: true
+    - name: type
+      value: rewards
+      type: query
+      description: Query parameter to return just a type of tasks.
+      disabled: true
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success 200
+    request:
+      url: "{{baseUrl}}/api/v3/tasks/challenge/:challengeId"
+      method: GET
+      params:
+        - name: challengeId
+          value: ""
+          type: path
+          description: The id of the challenge from which to retrieve the tasks
+        - name: type
+          value: habits
+          type: query
+          description: Query parameter to return just a type of tasks.
+          disabled: true
+        - name: type
+          value: dailys
+          type: query
+          description: Query parameter to return just a type of tasks.
+          disabled: true
+        - name: type
+          value: todos
+          type: query
+          description: Query parameter to return just a type of tasks.
+          disabled: true
+        - name: type
+          value: rewards
+          type: query
+          description: Query parameter to return just a type of tasks.
+          disabled: true
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "success": true,
+            "data": [
+              {
+                "_id": "5f12bfba-da30-4733-ad01-9c42f9817975",
+                "text": "API Trial",
+                "type": "habit",
+                "notes": "",
+                "tags": [],
+                "value": 27.70767809690112,
+                "priority": 1.5,
+                "attribute": "str",
+                "challenge": {
+                  "id": "f23c12f2-5830-4f15-9c36-e17fd729a812"
+                },
+                "group": {
+                  "assignedUsers": [],
+                  "approval": {
+                    "required": false,
+                    "approved": false,
+                    "requested": false
+                  }
+                },
+                "reminders": [],
+                "createdAt": "2017-01-12T19:03:33.485Z",
+                "updatedAt": "2017-01-13T17:45:52.442Z",
+                "history": [
+                  {
+                    "date": 1484257319183,
+                    "value": 18.53316748293123
+                  },
+                  {
+                    "date": 1484329552441,
+                    "value": 27.70767809690112
+                  }
+                ],
+                "down": false,
+                "up": true,
+                "id": "5f12bfba-da30-4733-ad01-9c42f9817975"
+              },
+              {
+                "_id": "54a81d23-529c-4daa-a6f7-c5c6e7e84936",
+                "text": "Challenge TODO",
+                "type": "todo",
+                "notes": "",
+                "tags": [],
+                "value": 2,
+                "priority": 2,
+                "attribute": "str",
+                "challenge": {
+                  "id": "f23c12f2-5830-4f15-9c36-e17fd729a812"
+                },
+                "group": {
+                  "assignedUsers": [],
+                  "approval": {
+                    "required": false,
+                    "approved": false,
+                    "requested": false
+                  }
+                },
+                "reminders": [],
+                "createdAt": "2017-01-12T19:07:10.310Z",
+                "updatedAt": "2017-01-13T20:24:51.070Z",
+                "checklist": [],
+                "collapseChecklist": false,
+                "completed": false,
+                "id": "54a81d23-529c-4daa-a6f7-c5c6e7e84936"
+              }
+            ],
+            "notifications": []
+          }
+  - name: 404 Response
+    description: "404"
+    request:
+      url: "{{baseUrl}}/api/v3/tasks/challenge/:challengeId"
+      method: GET
+      params:
+        - name: challengeId
+          value: ""
+          type: path
+          description: The id of the challenge from which to retrieve the tasks
+        - name: type
+          value: habits
+          type: query
+          description: Query parameter to return just a type of tasks.
+          disabled: true
+        - name: type
+          value: dailys
+          type: query
+          description: Query parameter to return just a type of tasks.
+          disabled: true
+        - name: type
+          value: todos
+          type: query
+          description: Query parameter to return just a type of tasks.
+          disabled: true
+        - name: type
+          value: rewards
+          type: query
+          description: Query parameter to return just a type of tasks.
+          disabled: true
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "ChallengeNotFound": {}
+          }

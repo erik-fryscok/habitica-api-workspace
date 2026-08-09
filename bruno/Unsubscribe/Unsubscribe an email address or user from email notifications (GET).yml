@@ -1,0 +1,90 @@
+info:
+  name: Unsubscribe an email address or user from email notifications (GET)
+  type: http
+  seq: 2
+  tags:
+    - Unsubscribe
+
+http:
+  method: GET
+  url: "{{baseUrl}}/email/unsubscribe"
+  params:
+    - name: code
+      value: ""
+      type: query
+      description: An unsubscription code that contains an encrypted User ID or email address
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success 200
+    request:
+      url: "{{baseUrl}}/email/unsubscribe"
+      method: GET
+      params:
+        - name: code
+          value: ""
+          type: query
+          description: An unsubscription code that contains an encrypted User ID or email address
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "Webpage": ""
+          }
+  - name: 400 Response
+    description: "400"
+    request:
+      url: "{{baseUrl}}/email/unsubscribe"
+      method: GET
+      params:
+        - name: code
+          value: ""
+          type: query
+          description: An unsubscription code that contains an encrypted User ID or email address
+    response:
+      status: 400
+      statusText: Bad Request
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "missingUnsubscriptionCode": {}
+          }
+  - name: 404 Response
+    description: "404"
+    request:
+      url: "{{baseUrl}}/email/unsubscribe"
+      method: GET
+      params:
+        - name: code
+          value: ""
+          type: query
+          description: An unsubscription code that contains an encrypted User ID or email address
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "UserNotFound": {}
+          }

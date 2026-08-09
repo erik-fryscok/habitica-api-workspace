@@ -1,0 +1,125 @@
+info:
+  name: Get members for a group
+  type: http
+  seq: 7
+  tags:
+    - Member
+
+http:
+  method: GET
+  url: "{{baseUrl}}/api/v3/groups/:groupId/members"
+  params:
+    - name: groupId
+      value: ""
+      type: path
+      description: The group id ('party' for the user party is accepted)
+    - name: lastId
+      value: ""
+      type: query
+      description: Query parameter to specify the last member returned in a previous request to this route and get the next batch of results.
+    - name: limit
+      value: ""
+      type: query
+      description: BETA Query parameter to specify the number of results to return. Max is 60.
+    - name: includeAllPublicFields
+      value: ""
+      type: query
+      description: If set to true then all public fields for members will be returned (similar to when making a request for a single member).
+    - name: includeTasks
+      value: ""
+      type: query
+      description: If set to true, then response should include all tasks per user related to the challenge
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success 200
+    request:
+      url: "{{baseUrl}}/api/v3/groups/:groupId/members"
+      method: GET
+      params:
+        - name: groupId
+          value: ""
+          type: path
+          description: The group id ('party' for the user party is accepted)
+        - name: lastId
+          value: ""
+          type: query
+          description: Query parameter to specify the last member returned in a previous request to this route and get the next batch of results.
+        - name: limit
+          value: ""
+          type: query
+          description: BETA Query parameter to specify the number of results to return. Max is 60.
+        - name: includeAllPublicFields
+          value: ""
+          type: query
+          description: If set to true then all public fields for members will be returned (similar to when making a request for a single member).
+        - name: includeTasks
+          value: ""
+          type: query
+          description: If set to true, then response should include all tasks per user related to the challenge
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "success": true,
+            "data": [
+              {
+                "_id": "00000001-1111-9999-9000-111111111111",
+                "profile": {
+                  "name": "Jiminy"
+                },
+                "id": "00000001-1111-9999-9000-111111111111"
+              },
+           }
+  - name: 404 Response
+    description: "404"
+    request:
+      url: "{{baseUrl}}/api/v3/groups/:groupId/members"
+      method: GET
+      params:
+        - name: groupId
+          value: ""
+          type: path
+          description: The group id ('party' for the user party is accepted)
+        - name: lastId
+          value: ""
+          type: query
+          description: Query parameter to specify the last member returned in a previous request to this route and get the next batch of results.
+        - name: limit
+          value: ""
+          type: query
+          description: BETA Query parameter to specify the number of results to return. Max is 60.
+        - name: includeAllPublicFields
+          value: ""
+          type: query
+          description: If set to true then all public fields for members will be returned (similar to when making a request for a single member).
+        - name: includeTasks
+          value: ""
+          type: query
+          description: If set to true, then response should include all tasks per user related to the challenge
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "ChallengeNotFound": {},
+            "GroupNotFound": {}
+          }

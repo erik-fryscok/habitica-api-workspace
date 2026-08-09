@@ -1,0 +1,1 @@
+let _e=[{type:"get",group:"Status",name:"Get status",url:"/api/v3/status",description:"Fixture endpoint",parameter:{fields:{}},success:{fields:{}}}];const ie={name:"Fixture Habitica API",version:"1.0.0",header:{content:"Fixture documentation"}};Pe();

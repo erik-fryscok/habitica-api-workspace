@@ -1,0 +1,7 @@
+info:
+  name: Challenge
+  type: folder
+  seq: 1
+
+request:
+  auth: inherit

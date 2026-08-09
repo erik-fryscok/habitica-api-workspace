@@ -1,0 +1,161 @@
+info:
+  name: Score a task
+  type: http
+  seq: 20
+  tags:
+    - Task
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/v3/tasks/:taskId/score/:direction"
+  params:
+    - name: taskId
+      value: ""
+      type: path
+      description: The task _id or alias
+    - name: direction
+      value: up
+      type: path
+      description: The direction for scoring the task
+    - name: direction
+      value: down
+      type: path
+      description: The direction for scoring the task
+      disabled: true
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success 200
+    request:
+      url: "{{baseUrl}}/api/v3/tasks/:taskId/score/:direction"
+      method: POST
+      params:
+        - name: taskId
+          value: ""
+          type: path
+          description: The task _id or alias
+        - name: direction
+          value: up
+          type: path
+          description: The direction for scoring the task
+        - name: direction
+          value: down
+          type: path
+          description: The direction for scoring the task
+          disabled: true
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "success": true,
+            "data": {
+              "delta": 0.9746999906450404,
+              "_tmp": {},
+              "hp": 49.06645205596985,
+              "mp": 37.2008917491047,
+              "exp": 101.93810026267543,
+              "gp": 77.09694176716997,
+              "lvl": 19,
+              "class": "rogue",
+              "points": 0,
+              "str": 5,
+              "con": 3,
+              "int": 3,
+              "per": 8,
+              "buffs": {
+                "str": 9,
+                "int": 9,
+                "per": 9,
+                "con": 9,
+                "stealth": 0,
+                "streaks": false,
+                "snowball": false,
+                "spookySparkles": false,
+                "shinySeed": false,
+                "seafoam": false
+              },
+              "training": {
+                "int": 0,
+                "per": 0,
+                "str": 0,
+                "con": 0
+              }
+            },
+            "notifications": []
+          }
+  - name: 202 Response
+    description: "202"
+    request:
+      url: "{{baseUrl}}/api/v3/tasks/:taskId/score/:direction"
+      method: POST
+      params:
+        - name: taskId
+          value: ""
+          type: path
+          description: The task _id or alias
+        - name: direction
+          value: up
+          type: path
+          description: The direction for scoring the task
+        - name: direction
+          value: down
+          type: path
+          description: The direction for scoring the task
+          disabled: true
+    response:
+      status: 202
+      statusText: Accepted
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "data.requiresApproval": false,
+            "message": ""
+          }
+  - name: 404 Response
+    description: "404"
+    request:
+      url: "{{baseUrl}}/api/v3/tasks/:taskId/score/:direction"
+      method: POST
+      params:
+        - name: taskId
+          value: ""
+          type: path
+          description: The task _id or alias
+        - name: direction
+          value: up
+          type: path
+          description: The direction for scoring the task
+        - name: direction
+          value: down
+          type: path
+          description: The direction for scoring the task
+          disabled: true
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "TaskNotFound": {}
+          }

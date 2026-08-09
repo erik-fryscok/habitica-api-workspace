@@ -1,0 +1,95 @@
+info:
+  name: Create group
+  type: http
+  seq: 2
+  tags:
+    - Group
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/v3/groups"
+  body:
+    type: json
+    data: |-
+      {
+        "name": "",
+        "type": "guild",
+        "privacy": "private"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 201 Response
+    description: "201"
+    request:
+      url: "{{baseUrl}}/api/v3/groups"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "name": "",
+            "type": "guild",
+            "privacy": "private"
+          }
+    response:
+      status: 201
+      statusText: Created
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          HTTP/1.1 200 OK
+          {
+            "name": "The Best Guild",
+            "leader": {
+              "_id": "authenticated-user-id",
+              "profile": {authenticated user's profile}
+            },
+            "type": "guild",
+            "privacy": "private",
+            "chat": [],
+            "leaderOnly": {
+              "challenges": false
+            },
+            memberCount: 1,
+            challengeCount: 0,
+            balance: 1,
+            logo: "",
+            leaderMessage: ""
+          }
+  - name: 401 Response
+    description: "401"
+    request:
+      url: "{{baseUrl}}/api/v3/groups"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "name": "",
+            "type": "guild",
+            "privacy": "private"
+          }
+    response:
+      status: 401
+      statusText: Unauthorized
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "messageInsufficientGems": {},
+            "partyMustbePrivate": {},
+            "messageGroupAlreadyInParty": {}
+          }

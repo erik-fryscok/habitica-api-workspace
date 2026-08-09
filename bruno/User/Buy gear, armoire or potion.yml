@@ -1,0 +1,73 @@
+info:
+  name: Buy gear, armoire or potion
+  type: http
+  seq: 13
+  tags:
+    - User
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/v3/user/buy/:key"
+  params:
+    - name: key
+      value: ""
+      type: path
+      description: The item to buy
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success 200
+    request:
+      url: "{{baseUrl}}/api/v3/user/buy/:key"
+      method: POST
+      params:
+        - name: key
+          value: ""
+          type: path
+          description: The item to buy
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "success": true,
+            "data": {
+              ---TRUNCATED USER RECORD---
+            },
+            "message": "Bought Short Sword"
+          }
+  - name: 400 Response
+    description: "400"
+    request:
+      url: "{{baseUrl}}/api/v3/user/buy/:key"
+      method: POST
+      params:
+        - name: key
+          value: ""
+          type: path
+          description: The item to buy
+    response:
+      status: 400
+      statusText: Bad Request
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "messageAlreadyOwnGear": {},
+            "messageNotEnoughGold": {}
+          }

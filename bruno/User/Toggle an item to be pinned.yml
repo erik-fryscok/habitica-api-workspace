@@ -1,0 +1,52 @@
+info:
+  name: Toggle an item to be pinned
+  type: http
+  seq: 54
+  tags:
+    - User
+
+http:
+  method: GET
+  url: "{{baseUrl}}/user/toggle-pinned-item/:key"
+  params:
+    - name: key
+      value: ""
+      type: path
+      description: "Path parameter: key"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success 200
+    request:
+      url: "{{baseUrl}}/user/toggle-pinned-item/:key"
+      method: GET
+      params:
+        - name: key
+          value: ""
+          type: path
+          description: "Path parameter: key"
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "success": true,
+            "data": {
+              "pinnedItems": [
+                 "type": "gear",
+                 "path": "gear.flat.weapon_1"
+              ]
+            }
+          }

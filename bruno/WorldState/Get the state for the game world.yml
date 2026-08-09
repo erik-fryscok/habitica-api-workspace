@@ -1,0 +1,42 @@
+info:
+  name: Get the state for the game world
+  type: http
+  seq: 1
+  tags:
+    - WorldState
+
+http:
+  method: GET
+  url: "{{baseUrl}}/api/v3/world-state"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success 200
+    request:
+      url: "{{baseUrl}}/api/v3/world-state"
+      method: GET
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "data.worldBoss.active": {},
+            "data.worldBoss.extra.worldDmg": {},
+            "data.worldBoss.key": {},
+            "data.worldBoss.progress.hp": {},
+            "data.worldBoss.progress.rage": {},
+            "data.npcImageSuffix": {},
+            "data.currentEvent": {}
+          }

@@ -1,0 +1,8 @@
+name: Environment example (safe default)
+variables:
+  - name: baseUrl
+    value: https://example.invalid
+  - secret: true
+    name: userId
+  - secret: true
+    name: apiKey

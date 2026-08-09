@@ -1,0 +1,52 @@
+info:
+  name: Get the in app items appearing in the user's reward column
+  type: http
+  seq: 31
+  tags:
+    - User
+
+http:
+  method: GET
+  url: "{{baseUrl}}/api/v3/user/in-app-rewards"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: default Response
+    description: Response
+    request:
+      url: "{{baseUrl}}/api/v3/user/in-app-rewards"
+      method: GET
+    response:
+      statusText: Unknown
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "success": true,
+            "data": [
+              {
+                "key":"weapon_armoire_battleAxe",
+                "text":"Battle Axe",
+                "notes":"This fine iron axe is well-suited to battling your fiercest
+                        foes or your most difficult tasks. Increases Intelligence by 6 and
+                        Constitution by 8. Enchanted Armoire: Independent Item.",
+                "value":1,
+                "type":"weapon",
+                "locked":false,
+                "currency":"gems",
+                "purchaseType":"gear",
+                "class":"shop_weapon_armoire_battleAxe",
+                "path":"gear.flat.weapon_armoire_battleAxe",
+                "pinType":"gear"
+              }
+            ]
+          }

@@ -1,0 +1,68 @@
+info:
+  name: Unequip all items by type
+  type: http
+  seq: 48
+  tags:
+    - User
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/v4/user/unequip/:type"
+  params:
+    - name: type
+      value: pet-mount-background
+      type: path
+      description: The type of items to unequip.
+    - name: type
+      value: costume
+      type: path
+      description: The type of items to unequip.
+      disabled: true
+    - name: type
+      value: equipped
+      type: path
+      description: The type of items to unequip.
+      disabled: true
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success 200
+    request:
+      url: "{{baseUrl}}/api/v4/user/unequip/:type"
+      method: POST
+      params:
+        - name: type
+          value: pet-mount-background
+          type: path
+          description: The type of items to unequip.
+        - name: type
+          value: costume
+          type: path
+          description: The type of items to unequip.
+          disabled: true
+        - name: type
+          value: equipped
+          type: path
+          description: The type of items to unequip.
+          disabled: true
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "success": true,
+            "data": {---DATA TRUNCATED---},
+            "message": "Battle Gear unequipped.
+          }

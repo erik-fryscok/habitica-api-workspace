@@ -1,0 +1,46 @@
+info:
+  name: Create a new task belonging to a group
+  type: http
+  seq: 8
+  tags:
+    - Task
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/v3/tasks/group/:groupId"
+  params:
+    - name: groupId
+      value: ""
+      type: path
+      description: The id of the group the new task(s) will belong to
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success 200
+    request:
+      url: "{{baseUrl}}/api/v3/tasks/group/:groupId"
+      method: POST
+      params:
+        - name: groupId
+          value: ""
+          type: path
+          description: The id of the group the new task(s) will belong to
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "data": ""
+          }

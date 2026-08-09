@@ -1,0 +1,92 @@
+info:
+  name: Search for users by username or email
+  type: http
+  seq: 2
+  tags:
+    - Moderators
+
+http:
+  method: GET
+  url: "{{baseUrl}}/api/v4/admin/search/:userIdentifier"
+  params:
+    - name: userIdentifier
+      value: ""
+      type: path
+      description: The username or email of the user to search for
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success 200
+    request:
+      url: "{{baseUrl}}/api/v4/admin/search/:userIdentifier"
+      method: GET
+      params:
+        - name: userIdentifier
+          value: ""
+          type: path
+          description: The username or email of the user to search for
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "data": {}
+          }
+  - name: 401 Response
+    description: "401"
+    request:
+      url: "{{baseUrl}}/api/v4/admin/search/:userIdentifier"
+      method: GET
+      params:
+        - name: userIdentifier
+          value: ""
+          type: path
+          description: The username or email of the user to search for
+    response:
+      status: 401
+      statusText: Unauthorized
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "NoAuthHeaders": {},
+            "NoAccount": {},
+            "NotAdmin": {}
+          }
+  - name: 404 Response
+    description: "404"
+    request:
+      url: "{{baseUrl}}/api/v4/admin/search/:userIdentifier"
+      method: GET
+      params:
+        - name: userIdentifier
+          value: ""
+          type: path
+          description: The username or email of the user to search for
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "NoUser": {}
+          }

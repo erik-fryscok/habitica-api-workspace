@@ -1,0 +1,53 @@
+info:
+  name: Create a new tag
+  type: http
+  seq: 1
+  tags:
+    - Tag
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/v3/tags"
+  body:
+    type: json
+    data: |-
+      {
+        "name": ""
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 201 Response
+    description: "201"
+    request:
+      url: "{{baseUrl}}/api/v3/tags"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "name": ""
+          }
+    response:
+      status: 201
+      statusText: Created
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "success": true,
+            "data": {
+              "name": "practicetag",
+              "id": "8bc0afbf-ab8e-49a4-982d-67a40557ed1a"
+            },
+            "notifications": []
+          }

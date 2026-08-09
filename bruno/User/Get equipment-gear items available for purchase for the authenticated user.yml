@@ -1,0 +1,51 @@
+info:
+  name: Get equipment/gear items available for purchase for the authenticated user
+  type: http
+  seq: 30
+  tags:
+    - User
+
+http:
+  method: GET
+  url: "{{baseUrl}}/api/v3/user/inventory/buy"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: default Response
+    description: Response
+    request:
+      url: "{{baseUrl}}/api/v3/user/inventory/buy"
+      method: GET
+    response:
+      statusText: Unknown
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "success": true,
+            "data": [
+              {
+                "text": "Training Sword",
+                "notes": "Practice weapon. Confers no benefit.",
+                "value": 1,
+                "type": "weapon",
+                "key": "weapon_warrior_0",
+                "set": "warrior-0",
+                "klass": "warrior",
+                "index": "0",
+                "str": 0,
+                "int": 0,
+                "per": 0,
+                "con": 0
+              }
+            ]
+          }

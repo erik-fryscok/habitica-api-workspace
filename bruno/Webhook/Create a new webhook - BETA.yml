@@ -1,0 +1,92 @@
+info:
+  name: Create a new webhook - BETA
+  type: http
+  seq: 1
+  tags:
+    - Webhook
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/v3/user/webhook"
+  body:
+    type: json
+    data: |-
+      {
+        "id": "",
+        "url": "",
+        "label": "",
+        "enabled": false,
+        "type": "taskActivity",
+        "options": {}
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 201 Response
+    description: "201"
+    request:
+      url: "{{baseUrl}}/api/v3/user/webhook"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "id": "",
+            "url": "",
+            "label": "",
+            "enabled": false,
+            "type": "taskActivity",
+            "options": {}
+          }
+    response:
+      status: 201
+      statusText: Created
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "data": {},
+            "data.id": "",
+            "data.url": "",
+            "data.label": "",
+            "data.enabled": false,
+            "data.type": "",
+            "data.options": {}
+          }
+  - name: 400 Response
+    description: "400"
+    request:
+      url: "{{baseUrl}}/api/v3/user/webhook"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "id": "",
+            "url": "",
+            "label": "",
+            "enabled": false,
+            "type": "taskActivity",
+            "options": {}
+          }
+    response:
+      status: 400
+      statusText: Bad Request
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "WebhookBodyInvalid": {}
+          }

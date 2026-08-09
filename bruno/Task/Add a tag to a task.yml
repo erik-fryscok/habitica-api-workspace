@@ -1,0 +1,141 @@
+info:
+  name: Add a tag to a task
+  type: http
+  seq: 2
+  tags:
+    - Task
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/v3/tasks/:taskId/tags/:tagId"
+  params:
+    - name: taskId
+      value: ""
+      type: path
+      description: The task _id or alias
+    - name: tagId
+      value: ""
+      type: path
+      description: The tag id
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success 200
+    request:
+      url: "{{baseUrl}}/api/v3/tasks/:taskId/tags/:tagId"
+      method: POST
+      params:
+        - name: taskId
+          value: ""
+          type: path
+          description: The task _id or alias
+        - name: tagId
+          value: ""
+          type: path
+          description: The tag id
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "success": true,
+            "data": {
+              "_id": "84f02d6a-7b43-4818-a35c-d3336cec4880",
+              "userId": "b0413351-405f-416f-8787-947ec1c85199",
+              "text": "Test API Params",
+              "alias": "test-api-params",
+              "type": "todo",
+              "notes": "",
+              "tags": [
+                "3d5d324d-a042-4d5f-872e-0553e228553e"
+              ],
+              "value": -1,
+              "priority": 2,
+              "attribute": "int",
+              "challenge": {
+                "taskId": "4a29874c-0308-417b-a909-2a7d262b49f6",
+                "id": "f23c12f2-5830-4f15-9c36-e17fd729a812"
+              },
+              "group": {
+                "assignedUsers": [],
+                "approval": {
+                  "required": false,
+                  "approved": false,
+                  "requested": false
+                }
+              },
+              "reminders": [],
+              "createdAt": "2017-01-13T21:23:05.949Z",
+              "updatedAt": "2017-01-14T19:41:29.466Z",
+              "checklist": [],
+              "collapseChecklist": false,
+              "completed": false,
+              "id": "84f02d6a-7b43-4818-a35c-d3336cec4880"
+            },
+            "notifications": []
+          }
+  - name: 400 Response
+    description: "400"
+    request:
+      url: "{{baseUrl}}/api/v3/tasks/:taskId/tags/:tagId"
+      method: POST
+      params:
+        - name: taskId
+          value: ""
+          type: path
+          description: The task _id or alias
+        - name: tagId
+          value: ""
+          type: path
+          description: The tag id
+    response:
+      status: 400
+      statusText: Bad Request
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "Invalid-request-parameters": {},
+            "TagExists": {}
+          }
+  - name: 404 Response
+    description: "404"
+    request:
+      url: "{{baseUrl}}/api/v3/tasks/:taskId/tags/:tagId"
+      method: POST
+      params:
+        - name: taskId
+          value: ""
+          type: path
+          description: The task _id or alias
+        - name: tagId
+          value: ""
+          type: path
+          description: The tag id
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "TaskNotFound": {}
+          }

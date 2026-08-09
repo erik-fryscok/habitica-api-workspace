@@ -1,0 +1,37 @@
+info:
+  name: Export user tasks history in CSV format
+  type: http
+  seq: 3
+  tags:
+    - Data Export
+
+http:
+  method: GET
+  url: "{{baseUrl}}/export/history.csv"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success 200
+    request:
+      url: "{{baseUrl}}/export/history.csv"
+      method: GET
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: text/csv
+      body:
+        type: text
+        data: |-
+          Task Name,Task ID,Task Type,Date,Value
+          Be Awesome,e826ddfa-dc2e-445f-a06c-64d3881982ea,habit,2016-06-02 13:26:05,1
+          Be Awesome,e826ddfa-dc2e-445f-a06c-64d3881982ea,habit,2016-06-03 05:06:55,1.026657310999762
+          ...

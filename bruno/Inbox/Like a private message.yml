@@ -1,0 +1,68 @@
+info:
+  name: Like a private message
+  type: http
+  seq: 2
+  tags:
+    - Inbox
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/v4/inbox/like-private-message/:uniqueMessageId"
+  params:
+    - name: uniqueMessageId
+      value: ""
+      type: path
+      description: This is NOT private message.id, but rather message.uniqueMessageId
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success 200
+    request:
+      url: "{{baseUrl}}/api/v4/inbox/like-private-message/:uniqueMessageId"
+      method: POST
+      params:
+        - name: uniqueMessageId
+          value: ""
+          type: path
+          description: This is NOT private message.id, but rather message.uniqueMessageId
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "data": {}
+          }
+  - name: 404 Response
+    description: "404"
+    request:
+      url: "{{baseUrl}}/api/v4/inbox/like-private-message/:uniqueMessageId"
+      method: POST
+      params:
+        - name: uniqueMessageId
+          value: ""
+          type: path
+          description: This is NOT private message.id, but rather message.uniqueMessageId
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "MessageNotFound": {}
+          }

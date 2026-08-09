@@ -1,0 +1,72 @@
+info:
+  name: Change class
+  type: http
+  seq: 21
+  tags:
+    - User
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/v3/user/change-class"
+  params:
+    - name: class
+      value: ""
+      type: query
+      description: Query parameter - ?class={warrior|rogue|wizard|healer}
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success 200
+    request:
+      url: "{{baseUrl}}/api/v3/user/change-class"
+      method: POST
+      params:
+        - name: class
+          value: ""
+          type: query
+          description: Query parameter - ?class={warrior|rogue|wizard|healer}
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "data.flags": {},
+            "data.stats": {},
+            "data.preferences": {},
+            "data.items": {}
+          }
+  - name: 400 Response
+    description: Error 4xx
+    request:
+      url: "{{baseUrl}}/api/v3/user/change-class"
+      method: POST
+      params:
+        - name: class
+          value: ""
+          type: query
+          description: Query parameter - ?class={warrior|rogue|wizard|healer}
+    response:
+      status: 400
+      statusText: Bad Request
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "Gems": {},
+            "Level": {}
+          }

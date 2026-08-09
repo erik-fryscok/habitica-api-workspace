@@ -1,0 +1,260 @@
+info:
+  name: Create a new task belonging to a challenge
+  type: http
+  seq: 6
+  tags:
+    - Task
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/v3/tasks/challenge/:challengeId"
+  params:
+    - name: challengeId
+      value: ""
+      type: path
+      description: The id of the challenge the new task(s) will belong to
+  body:
+    type: json
+    data: |-
+      {
+        "text": "",
+        "type": "habit",
+        "attribute": "str",
+        "collapseChecklist": false,
+        "notes": "",
+        "date": "",
+        "priority": 0.1,
+        "reminders": [],
+        "frequency": "daily",
+        "repeat": "",
+        "everyX": 0,
+        "streak": 0,
+        "daysOfMonth": [],
+        "weeksOfMonth": [],
+        "startDate": "",
+        "up": false,
+        "down": false,
+        "value": 0
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 201 Response
+    description: "201"
+    request:
+      url: "{{baseUrl}}/api/v3/tasks/challenge/:challengeId"
+      method: POST
+      params:
+        - name: challengeId
+          value: ""
+          type: path
+          description: The id of the challenge the new task(s) will belong to
+      body:
+        type: json
+        data: |-
+          {
+            "text": "",
+            "type": "habit",
+            "attribute": "str",
+            "collapseChecklist": false,
+            "notes": "",
+            "date": "",
+            "priority": 0.1,
+            "reminders": [],
+            "frequency": "daily",
+            "repeat": "",
+            "everyX": 0,
+            "streak": 0,
+            "daysOfMonth": [],
+            "weeksOfMonth": [],
+            "startDate": "",
+            "up": false,
+            "down": false,
+            "value": 0
+          }
+    response:
+      status: 201
+      statusText: Created
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "success": true,
+            "data": {
+              "text": "Test API Params",
+              "type": "todo",
+              "notes": "",
+              "tags": [],
+              "value": 0,
+              "priority": 1,
+              "attribute": "str",
+              "challenge": {
+                "id": "f23c12f2-5830-4f15-9c36-e17fd729a812"
+              },
+              "group": {
+                "assignedUsers": [],
+                "approval": {
+                  "required": false,
+                  "approved": false,
+                  "requested": false
+                }
+              },
+              "reminders": [],
+              "_id": "4a29874c-0308-417b-a909-2a7d262b49f6",
+              "createdAt": "2017-01-13T21:23:05.949Z",
+              "updatedAt": "2017-01-13T21:23:05.949Z",
+              "checklist": [],
+              "collapseChecklist": false,
+              "completed": false,
+              "id": "4a29874c-0308-417b-a909-2a7d262b49f6"
+            },
+            "notifications": []
+          }
+  - name: 400 Response
+    description: "400"
+    request:
+      url: "{{baseUrl}}/api/v3/tasks/challenge/:challengeId"
+      method: POST
+      params:
+        - name: challengeId
+          value: ""
+          type: path
+          description: The id of the challenge the new task(s) will belong to
+      body:
+        type: json
+        data: |-
+          {
+            "text": "",
+            "type": "habit",
+            "attribute": "str",
+            "collapseChecklist": false,
+            "notes": "",
+            "date": "",
+            "priority": 0.1,
+            "reminders": [],
+            "frequency": "daily",
+            "repeat": "",
+            "everyX": 0,
+            "streak": 0,
+            "daysOfMonth": [],
+            "weeksOfMonth": [],
+            "startDate": "",
+            "up": false,
+            "down": false,
+            "value": 0
+          }
+    response:
+      status: 400
+      statusText: Bad Request
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "MustBeType": {},
+            "Text-ValidationFailed": {},
+            "Alias-ValidationFailed": {},
+            "Value-ValidationFailed": {}
+          }
+  - name: 401 Response
+    description: "401"
+    request:
+      url: "{{baseUrl}}/api/v3/tasks/challenge/:challengeId"
+      method: POST
+      params:
+        - name: challengeId
+          value: ""
+          type: path
+          description: The id of the challenge the new task(s) will belong to
+      body:
+        type: json
+        data: |-
+          {
+            "text": "",
+            "type": "habit",
+            "attribute": "str",
+            "collapseChecklist": false,
+            "notes": "",
+            "date": "",
+            "priority": 0.1,
+            "reminders": [],
+            "frequency": "daily",
+            "repeat": "",
+            "everyX": 0,
+            "streak": 0,
+            "daysOfMonth": [],
+            "weeksOfMonth": [],
+            "startDate": "",
+            "up": false,
+            "down": false,
+            "value": 0
+          }
+    response:
+      status: 401
+      statusText: Unauthorized
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "NoAccount": {}
+          }
+  - name: 404 Response
+    description: "404"
+    request:
+      url: "{{baseUrl}}/api/v3/tasks/challenge/:challengeId"
+      method: POST
+      params:
+        - name: challengeId
+          value: ""
+          type: path
+          description: The id of the challenge the new task(s) will belong to
+      body:
+        type: json
+        data: |-
+          {
+            "text": "",
+            "type": "habit",
+            "attribute": "str",
+            "collapseChecklist": false,
+            "notes": "",
+            "date": "",
+            "priority": 0.1,
+            "reminders": [],
+            "frequency": "daily",
+            "repeat": "",
+            "everyX": 0,
+            "streak": 0,
+            "daysOfMonth": [],
+            "weeksOfMonth": [],
+            "startDate": "",
+            "up": false,
+            "down": false,
+            "value": 0
+          }
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "ChecklistNotFound": {},
+            "ChallengeNotFound": {}
+          }

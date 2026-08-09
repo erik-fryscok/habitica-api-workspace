@@ -1,0 +1,110 @@
+info:
+  name: Get a member profile
+  type: http
+  seq: 4
+  tags:
+    - Member
+
+http:
+  method: GET
+  url: "{{baseUrl}}/api/v3/members/:memberId"
+  params:
+    - name: memberId
+      value: ""
+      type: path
+      description: The member's id
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success 200
+    request:
+      url: "{{baseUrl}}/api/v3/members/:memberId"
+      method: GET
+      params:
+        - name: memberId
+          value: ""
+          type: path
+          description: The member's id
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+           "success": true,
+           "data": {
+             "_id": "99999999-9999-9999-9999-8f14c101aeff",
+             "inbox": {
+               "optOut": false
+             },
+             "stats": {
+             ---INCLUDES STATS AND BUFFS---
+             },
+             "profile": {
+               "name": "Ezra"
+             },
+             "preferences": {
+               ---INCLUDES INFO ABOUT APPEARANCE AND PUBLIC PREFS---
+             },
+             "party": {
+               "_id": "12345678-0987-abcd-82a6-837c81db4c1e",
+               "quest": {
+                 "RSVPNeeded": false,
+                 "progress": {}
+               },
+             },
+             "items": {
+               "lastDrop": {
+                 "count": 0,
+                 "date": "2017-01-15T02:41:35.009Z"
+               },
+                 ----INCLUDES QUESTS, FOOD, POTIONS, EGGS, GEAR, CARDS, SPECIAL ITEMS (E.G. SNOWBALLS)----
+               }
+             },
+             "achievements": {
+               "partyUp": true,
+               "habitBirthdays": 2,
+             },
+             "auth": {
+               "timestamps": {
+                 "loggedin": "2017-03-05T12:30:54.545Z",
+                 "created": "2017-01-12T03:30:11.842Z"
+               }
+             },
+             "id": "99999999-9999-9999-9999-8f14c101aeff"
+           }
+          }
+          )
+  - name: 404 Response
+    description: "404"
+    request:
+      url: "{{baseUrl}}/api/v3/members/:memberId"
+      method: GET
+      params:
+        - name: memberId
+          value: ""
+          type: path
+          description: The member's id
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "UserNotFound": {}
+          }

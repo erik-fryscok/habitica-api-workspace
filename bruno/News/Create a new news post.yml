@@ -1,0 +1,38 @@
+info:
+  name: Create a new news post
+  type: http
+  seq: 1
+  tags:
+    - News
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/v4/news"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success 200
+    request:
+      url: "{{baseUrl}}/api/v4/news"
+      method: POST
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          HTTP/1.1 200 OK
+          {
+            "title": "News Title",
+            ...
+          }

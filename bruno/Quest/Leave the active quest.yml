@@ -1,0 +1,69 @@
+info:
+  name: Leave the active quest
+  type: http
+  seq: 6
+  tags:
+    - Quest
+
+http:
+  method: POST
+  url: "{{baseUrl}}/api/v3/groups/:groupId/quests/leave"
+  params:
+    - name: groupId
+      value: ""
+      type: path
+      description: The group _id (or 'party')
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Success 200
+    request:
+      url: "{{baseUrl}}/api/v3/groups/:groupId/quests/leave"
+      method: POST
+      params:
+        - name: groupId
+          value: ""
+          type: path
+          description: The group _id (or 'party')
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "data": {}
+          }
+  - name: 404 Response
+    description: "404"
+    request:
+      url: "{{baseUrl}}/api/v3/groups/:groupId/quests/leave"
+      method: POST
+      params:
+        - name: groupId
+          value: ""
+          type: path
+          description: The group _id (or 'party')
+    response:
+      status: 404
+      statusText: Not Found
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "GroupNotFound": {},
+            "QuestNotFound": {}
+          }
